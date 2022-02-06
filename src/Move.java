@@ -1,4 +1,3 @@
-package Move;
 /*
 Daniel Ha
 260911714
@@ -34,7 +33,7 @@ public class Move implements Movement {
      * @param pDirection Direction
      * @param pSpeed Speed
      * @param distance int
-     * @param pSavedFormat Move.Move.SavedFormat
+     * @param pSavedFormat MovedFormat
      * @pre distance >= 0
      */
     public Move(Direction pDirection, Speed pSpeed, int distance, SavedFormat pSavedFormat){
@@ -45,29 +44,32 @@ public class Move implements Movement {
         this.distance = distance;
     }
 
-    public void printMove() {
-        System.out.println("Move " + aDirection.toString() + " : " + distance + " distance" + " : at " + aSpeed.toString() + " speed");
-    }
 
 
     public Direction getDirection() {
         return this.aDirection;
     }
 
-
     public Speed getSpeed() {
         return this.aSpeed;
     }
-
 
     public int getDistance() {
         return this.distance;
     }
 
+
+
+
+
+
     @Override
-    public SavedFormat getSavedFormat() {
-        return this.aSavedFormat;
+    public String getSavedFormat() {
+        return this.aSavedFormat.toString();
     }
+
+    @Override
+    public void setSavedFormat(SavedFormat aFormat) {this.aSavedFormat = aFormat;}
 
     @Override
     public boolean isRecording() {
@@ -75,8 +77,11 @@ public class Move implements Movement {
     }
 
     @Override
-    public void execute(){
+    public void setRecordingOff() {this.aSavedFormat = null;}
 
+    @Override
+    public void execute(){
+        System.out.println("Move " + aDirection.toString() + " : " + distance + " distance" + " : at " + aSpeed.toString() + " speed");
     }
 
 

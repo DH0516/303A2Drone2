@@ -1,4 +1,3 @@
-package Move;
 /*
 Daniel Ha
 260911714
