@@ -1,10 +1,11 @@
+package Move;
 /*
 Daniel Ha
 260911714
 COMP303 W2022 A2
  */
 
-public class Move implements Movement{
+public class Move implements Movement {
 
     /**
      * Fields
@@ -29,11 +30,11 @@ public class Move implements Movement{
     }
 
     /**
-     * Overloaded Constructor
+     * Overload Constructor
      * @param pDirection Direction
      * @param pSpeed Speed
      * @param distance int
-     * @param pSavedFormat SavedFormat
+     * @param pSavedFormat Move.Move.SavedFormat
      * @pre distance >= 0
      */
     public Move(Direction pDirection, Speed pSpeed, int distance, SavedFormat pSavedFormat){
@@ -44,23 +45,21 @@ public class Move implements Movement{
         this.distance = distance;
     }
 
-
-    @Override
-    public void execute(Direction pDirection, Speed pSpeed, int distance, SavedFormat pSavedFormat) {
-        System.out.println("Move " + aDirection.toString() + " : " + distance + " distance" + " : at " + pSpeed.toString() + " speed");
+    public void printMove() {
+        System.out.println("Move " + aDirection.toString() + " : " + distance + " distance" + " : at " + aSpeed.toString() + " speed");
     }
 
-    @Override
+
     public Direction getDirection() {
         return this.aDirection;
     }
 
-    @Override
+
     public Speed getSpeed() {
         return this.aSpeed;
     }
 
-    @Override
+
     public int getDistance() {
         return this.distance;
     }
@@ -74,5 +73,12 @@ public class Move implements Movement{
     public boolean isRecording() {
         return aSavedFormat != null;
     }
+
+    @Override
+    public void execute(){
+
+    }
+
+
 
 }

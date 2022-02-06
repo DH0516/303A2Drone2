@@ -4,6 +4,8 @@ Daniel Ha
 COMP303 W2022 A2
  */
 
+import Move.Move;
+
 import java.util.LinkedList;
 import java.util.List;
 
