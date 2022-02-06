@@ -10,7 +10,7 @@ COMP303 W2022 A2
 
 import Move.Movement;
 
-public interface Tricks extends Movement {
+public interface Tricks implements Move.Movement {
 
 
 

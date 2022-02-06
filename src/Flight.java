@@ -1,4 +1,3 @@
-package Trick;
 /*
 Daniel Ha
 260911714
@@ -11,8 +10,8 @@ import java.util.List;
 public class Flight implements Comparable<Flight>{
 
     private final List<Flight> aFlight = new ArrayList<Flight>();
-    //private Comparator<Trick.Flight> aComparator = Trick.Flight.createByTricksComparator();
-    //private Comparator<Trick.Flight> aComparator = Trick.Flight.createByUniqueMovementsComparator();
+    //private Comparator<Flight> aComparator = Flight.createByTricksComparator();
+    //private Comparator<Flight> aComparator = Flight.createByUniqueMovementsComparator();
 
 
 
