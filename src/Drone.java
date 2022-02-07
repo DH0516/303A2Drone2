@@ -7,20 +7,12 @@ COMP303 W2022 A2
 import java.util.ArrayList;
 import java.util.List;
 
-//Flights, Tricks and Movements can be executed on a Drone.
-
 /*
 Flights, Tricks and Movements can be executed on a Drone.
-Compare tricks - ascending
-compare unique movements - ascending
-Sort
  */
 
 public class Drone {
-    /**
-     * Fields
-     */
-
+    //Fields
     final private String name;
     private List<Movement> droneMovementList = new ArrayList<>();
 
@@ -40,25 +32,32 @@ public class Drone {
         return this.name;
     }
 
-    public void addMove(Direction pDirection, Speed pSpeed, int distance, SavedFormat pSavedFormat){
-        Move aMove = new Move(pDirection, pSpeed, distance, pSavedFormat);
-        droneMovementList.add(aMove);
+    public void add(Move pMove){
+        droneMovementList.add(pMove);
     }
 
-    public void addDroneTrick(DroneTrick.Tricks trickName, SavedFormat pSavedFormat){
-        DroneTrick aDroneTrick = new DroneTrick(trickName, pSavedFormat);
-        droneMovementList.add(aDroneTrick);
+    public void add(DroneTrick pDroneTrick){
+        droneMovementList.add(pDroneTrick);
     }
 
-    public void addFlight(Flight pFlight){
+    public void add(Flight pFlight){
         droneMovementList.add(pFlight);
     }
 
+
+
+    /**
+     * Remove last from droneMovementList
+     */
     public void removeLastMovement(){
         droneMovementList.remove(droneMovementList.size()-1);
     }
 
-    public void runAllMovement(){
+    /**
+     * do 'execute' on all movements
+     * should print out in MOVE format
+     */
+    public void executeAll(){
         for (Movement pMovement : droneMovementList){
             pMovement.execute();
         }

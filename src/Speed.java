@@ -6,9 +6,4 @@ COMP303 W2022 A2
 
 public enum Speed {
     LOW, MODERATE, HIGH;
-
-    @Override
-    public String toString() {
-        return name().charAt(0) + name().substring(1).toLowerCase();
-    }
 }

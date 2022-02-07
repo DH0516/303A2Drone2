@@ -15,12 +15,12 @@ public class DroneTrick implements Movement{
         TakeOff, Land, Pucker, Spindive;
     }
 
-    String currentTrickName;
-    SavedFormat currentTrickFormat;
-    List<Move> currentTrick = new ArrayList<>(); //list of Moves
+    private String currentTrickName;
+    private SavedFormat currentTrickFormat;
+    private List<Move> currentTrick = new ArrayList<>(); //list of Moves
 
     /**
-     * Constructor
+     * Constructor v.1
      * @param pTrick TakeOff, Land, Pucker, Spindive
      * @param pFormat set format
      */
@@ -28,6 +28,10 @@ public class DroneTrick implements Movement{
         buildTrick (pTrick, pFormat);
     }
 
+    /**
+     * Constructor v.2 (no recording)
+     * @param pTrick TakeOff, Land, Pucker, Spindive
+     */
     public DroneTrick(Tricks pTrick) {
         buildTrick (pTrick, null);
     }
@@ -36,6 +40,7 @@ public class DroneTrick implements Movement{
     /**
      * Helper Method for constructor, load default trick
      * @param pTrick TakeOff, Land, Pucker, Spindive
+     * @param pFormat MP4, MOV, WMV, AVI, FLV, MKV
      */
     private void buildTrick(Tricks pTrick, SavedFormat pFormat) {
         if (pTrick.equals(Tricks.TakeOff)) {
@@ -57,6 +62,10 @@ public class DroneTrick implements Movement{
         currentTrickFormat = pFormat;
     }
 
+    /**
+     * 2 Moves
+     * fly up at low speed, by 1m -> fly up at moderate speed, by 2m
+     */
     private void makeTakeOff(){
         Move move1 = new Move(Direction.UP, Speed.LOW, 1);
         Move move2 = new Move(Direction.UP, Speed.MODERATE, 2);
@@ -64,6 +73,10 @@ public class DroneTrick implements Movement{
         currentTrick.add(move2);
     }
 
+    /**
+     * 2 Moves
+     * fly down at low speed, by 1m -> fly down at moderate speed, by 2m
+     */
     private void makeLand(){
         Move move1 = new Move(Direction.DOWN, Speed.LOW, 1);
         Move move2 = new Move(Direction.DOWN, Speed.MODERATE, 2);
@@ -71,8 +84,11 @@ public class DroneTrick implements Movement{
         currentTrick.add(move2);
     }
 
+    /**
+     * 6 Moves
+     * fly up -> turn left -> turn left -> turn left -> turn left -> fly down
+     */
     private void makePucker(){
-        //fly up -> turn left -> turn left -> turn left -> turn left -> fly down
         Move move1 = new Move(Direction.UP, Speed.MODERATE, 2);
         Move move2 = new Move(Direction.LEFT, Speed.HIGH, 1);
         Move move3 = new Move(Direction.LEFT, Speed.HIGH, 1);
@@ -87,8 +103,11 @@ public class DroneTrick implements Movement{
         currentTrick.add(move6);
     }
 
+    /**
+     * 4 moves
+     * fly up -> turn left -> turn left -> fly down at fast speed
+     */
     private void makeSpindive(){
-        //fly up -> turn left -> turn left -> fly down at fast speed
         Move move1 = new Move(Direction.UP, Speed.MODERATE, 3);
         Move move2 = new Move(Direction.LEFT, Speed.HIGH, 1);
         Move move3 = new Move(Direction.LEFT, Speed.HIGH, 1);
@@ -161,6 +180,9 @@ public class DroneTrick implements Movement{
         currentTrickFormat = null;
     }
 
+    /**
+     * execute MOVE inside of TRICK (currentTrick)
+     */
     @Override
     public void execute(){
         for (Move pMove : currentTrick){

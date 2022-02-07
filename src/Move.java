@@ -45,20 +45,29 @@ public class Move implements Movement {
     }
 
 
-
+    /**
+     * Move: Direction(Enum) getter
+     * @return Direction
+     */
     public Direction getDirection() {
         return this.aDirection;
     }
 
+    /**
+     * Move: Speed(Enum) getter
+     * @return Speed
+     */
     public Speed getSpeed() {
         return this.aSpeed;
     }
 
+    /**
+     * Move: Distance(int) getter
+     * @return int
+     */
     public int getDistance() {
         return this.distance;
     }
-
-
 
 
 

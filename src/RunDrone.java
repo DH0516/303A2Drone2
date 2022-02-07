@@ -53,21 +53,16 @@ public class RunDrone {
     System.out.println("Sort by number of tricks (ascending) - Expected result: test1 test3 test2 (2-3-4)");
     listFlights.sort(new Flight.CompareByNumberOfTricks());
     for (Flight aFlight : listFlights){
-        System.out.println(aFlight.flightName);
+        System.out.println(aFlight.getFlightName());
     }
     System.out.println();
 
     System.out.println("Sort by number of unique moves - Expected result: test2 test1 test3 (8-12-12)");
     listFlights.sort(new Flight.CompareByUniqueMoves());
     for (Flight aFlight : listFlights){
-        System.out.println(aFlight.flightName);
+        System.out.println(aFlight.getFlightName());
     }
 
 
-
-
     }
-
-
-
 }

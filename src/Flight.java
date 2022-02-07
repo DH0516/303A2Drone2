@@ -23,19 +23,42 @@ public class Flight implements Movement{
 
     //a trick = List<Move>
     //tricksList = List<trick>
-    private final List<DroneTrick> tricksList = new ArrayList<>();
-    String flightName;
-    SavedFormat flightSavedFormat;
 
+    //Fields
+    private final List<DroneTrick> tricksList = new ArrayList<>();
+    private String flightName;
+    private SavedFormat flightSavedFormat;
+
+    /**
+     * Constructor v.1 (no recording)
+     * @param pFlightName String
+     */
     public Flight(String pFlightName){
         this.flightName = pFlightName;
     }
 
+    /**
+     * Constructor v.2
+     * @param pFlightName String
+     * @param pFormat MP4, MOV, WMV, AVI, FLV, MKV
+     */
     public Flight(String pFlightName, SavedFormat pFormat){
         this.flightName = pFlightName;
         this.flightSavedFormat = pFormat;
     }
 
+    /**
+     * Flight Name getter
+     * @return String
+     */
+    public String getFlightName(){
+        return this.flightName;
+    }
+
+    /**
+     * Q3. count unique directions only
+     * @return int
+     */
     public int getUniqueDirections(){
         /*
         1. iterate through Move in list tricksList
@@ -66,21 +89,31 @@ public class Flight implements Movement{
         return uniqueMove.size();
     }
 
-
+    /**
+     * Add DroneTrick at the end of tricksList
+     * @param pTrick DroneTrick.Tricks: TakeOff, Land, Pucker, Spindive
+     */
     public void addTrick (DroneTrick.Tricks pTrick){
         DroneTrick aTrick = new DroneTrick(pTrick, flightSavedFormat);
         tricksList.add(aTrick);
     }
 
+    /**
+     * Remove DroneTrick at the end of tricksList
+     */
     public void removeLastTrick(){
         tricksList.remove(tricksList.size()-1);
     }
 
+    /**
+     * Number of DroneTrick in tricksList
+     * @return tricksList.size()-1
+     */
     public int getNumberofTricks(){return tricksList.size()-1;}
 
 
     /*
-    Comparison methods
+    Comparison methods - Comparators
      */
     static class CompareByNumberOfTricks implements Comparator<Flight>{
         @Override
@@ -126,14 +159,15 @@ public class Flight implements Movement{
         this.flightSavedFormat = pFormat;
     }
 
+    /**
+     * execute MOVE inside of TRICK inside of FLIGHT(tricksList)
+     */
     @Override
     public void execute() {
         for (DroneTrick aTrick : tricksList){
             aTrick.execute();
         }
     }
-
-
 
 }
 
