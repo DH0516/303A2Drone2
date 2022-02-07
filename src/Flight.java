@@ -1,4 +1,11 @@
+/*
+Daniel Ha
+260911714
+COMP303 W2022 A2
+ */
+
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.HashMap;
 
@@ -9,8 +16,6 @@ import java.util.HashMap;
  */
 
 public class Flight implements Movement{
-
-
 
     public enum Tricks{
         TakeOff, Land, Pucker, Spindive;
@@ -49,6 +54,18 @@ public class Flight implements Movement{
         return uniqueDirection.size();
     }
 
+    public int getUniqueMoves(){
+        HashMap<Move, Integer> uniqueMove = new HashMap<>();
+        for (DroneTrick aTrick: tricksList){
+            for (Move moveInsideATrick: aTrick.getDroneTrick()){
+                if (!uniqueMove.containsKey(moveInsideATrick)){
+                    uniqueMove.put(moveInsideATrick,1);
+                }
+            }
+        }
+        return uniqueMove.size();
+    }
+
 
     public void addTrick (DroneTrick.Tricks pTrick){
         DroneTrick aTrick = new DroneTrick(pTrick, flightSavedFormat);
@@ -59,8 +76,36 @@ public class Flight implements Movement{
         tricksList.remove(tricksList.size()-1);
     }
 
+    public int getNumberofTricks(){return tricksList.size()-1;}
 
 
+    /*
+    Comparison methods
+     */
+    static class CompareByNumberOfTricks implements Comparator<Flight>{
+        @Override
+        public int compare(Flight o1, Flight o2) {
+            int one = o1.getNumberofTricks();
+            int two = o2.getNumberofTricks();
+            return Integer.compare(one, two);
+        }
+
+    }
+
+    static class CompareByUniqueMoves implements Comparator<Flight>{
+        @Override
+        public int compare(Flight o1, Flight o2) {
+            int one = o1.getUniqueMoves();
+            int two = o2.getUniqueMoves();
+            return Integer.compare(one, two);
+        }
+    }
+
+
+
+    /*
+    From Movement interface
+     */
     @Override
     public boolean isRecording() {
         return this.flightSavedFormat != null;

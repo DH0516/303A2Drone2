@@ -1,4 +1,8 @@
-
+/*
+Daniel Ha
+260911714
+COMP303 W2022 A2
+ */
 
 import java.util.ArrayList;
 import java.util.Arrays;
